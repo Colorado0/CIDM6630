@@ -6,14 +6,17 @@ from datetime import datetime
 import sys
 
 from database import DatabaseManager
+import unittest
 
 # module scope
 db = DatabaseManager('bookmarks.db')
+
 
 class CreateBookmarksTableCommand:
     '''
     uses the DatabaseManager to create the bookmarks table
     '''
+
     def execute(self):
         db.create_table('bookmarks', {
             'id': 'integer primary key autoincrement',
@@ -33,6 +36,7 @@ class AddBookmarkCommand:
     3. Insert the data into the bookmarks table using the DatabaseManager.add method.
     4. Return a success message that will eventually be displayed by the presentation layer.
     '''
+
     def execute(self, data):
         data['date_added'] = datetime.utcnow().isoformat()
         db.add('bookmarks', data)
@@ -47,6 +51,7 @@ class ListBookmarksCommand:
     2. Pass this information along to db.select in its execute method.
     3. Return the result (using the cursor’s .fetchall() method) because select is a query.
     '''
+
     def __init__(self, order_by='date_added'):
         self.order_by = order_by
 
@@ -58,6 +63,7 @@ class DeleteBookmarkCommand:
     '''
     We also need to remove bookmarks.
     '''
+
     def execute(self, data):
         db.delete('bookmarks', {'id': data})
         return 'Bookmark deleted!'
@@ -67,3 +73,17 @@ class QuitCommand:
     def execute(self):
         sys.exit()
 
+
+# class FunctionalTestCase(unittest.TestCase):
+#     def test_working(self):
+#         pass
+
+#     def test_add_bookmark(self):
+#         # arrange
+#         bookmark1 = AddBookmarkCommand(
+#             "Pigs Fly", "www.pigsfly.com", "Best Book Ever")
+#         expected_value = 'Bookmark added!'
+#         # act
+#         actual_value = bookmark1.AddBookmarkCommand()
+#         # assert
+#         self.assertEqual(expected_value, actual_value)

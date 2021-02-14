@@ -28,6 +28,7 @@ This modular design, which separates concerns, provides opportunities for extens
 import os
 
 import commands
+import unittest
 
 
 class Option:
@@ -123,3 +124,18 @@ if __name__ == '__main__':
     # endless program loop
     while True:
         loop()
+
+
+class FunctionalTestCase(unittest.TestCase):
+    def test_working(self):
+        pass
+
+    # def test_add_bookmark(self):
+    #     # arrange
+    #     bookmark1 = commands.AddBookmarkCommand(
+    #         'Pigs Fly', 'www.pigsfly.com', 'Best Book Ever')
+    #     expected_value = 'Bookmark added!'
+    #     # act
+    #     actual_value = bookmark1.AddBookmarkCommand()
+    #     # assert
+    #     self.assertEqual(expected_value, actual_value)
