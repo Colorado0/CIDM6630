@@ -3,7 +3,7 @@ This module provides the presentation layer and can be consdired "the program."
 
 This module facilitates an infinite loop that:
 1. Clears the screen
-2. 2Prints the menu options
+2. 23Prints the menu options
     (A) Add a bookmark
     (B) List bookmarks by date
     (T) List bookmarks by title
