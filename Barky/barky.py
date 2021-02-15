@@ -117,6 +117,41 @@ def loop():
     _ = input('Press ENTER to return to menu')
 
 
+class FunctionalTestCase(unittest.TestCase):
+    def test_working(self):
+        pass
+
+    def test_add_bookmark(self):
+        # arrange
+        bookmark1 = commands.AddBookmarkCommand()
+        expected_value = 'Bookmark added!'
+        # act
+        data = {'Title': 'Pigs Fly', 'url': 'www.pigsfly.com',
+                'notes': 'Best Book Ever'}
+        actual_value = bookmark1.execute(data)
+        # assert
+        self.assertEqual(expected_value, actual_value)
+
+    def test_list_delete(self):
+        # arrange
+        bookmark1 = commands.DeleteBookmarkCommand()
+        expected_value = 'Bookmark deleted!'
+        # act
+        actual_value = bookmark1.execute(2)
+        # assert
+        self.assertEqual(expected_value, actual_value)
+
+    def test_list_by_date(self):
+        # arrange
+        bookmark1 = commands.ListBookmarksCommand()
+        expected_value = [
+            (1, 'Hello Kitty', 'www.yahoo.com', 'I like cats', '2021-02-14T22:38:47.279181')]
+        # act
+        actual_value = bookmark1.execute()
+        # assert
+        self.assertEqual(expected_value, actual_value)
+
+
 # this ensures that this module runs first
 if __name__ == '__main__':
     commands.CreateBookmarksTableCommand().execute()
@@ -125,17 +160,4 @@ if __name__ == '__main__':
     while True:
         loop()
 
-
-class FunctionalTestCase(unittest.TestCase):
-    def test_working(self):
-        pass
-
-    # def test_add_bookmark(self):
-    #     # arrange
-    #     bookmark1 = commands.AddBookmarkCommand(
-    #         'Pigs Fly', 'www.pigsfly.com', 'Best Book Ever')
-    #     expected_value = 'Bookmark added!'
-    #     # act
-    #     actual_value = bookmark1.AddBookmarkCommand()
-    #     # assert
-    #     self.assertEqual(expected_value, actual_value)
+    # unittest.main()
