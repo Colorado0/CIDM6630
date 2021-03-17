@@ -10,6 +10,7 @@ def create_app():
 
     app = Flask(__name__)
     app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bookmarks.db'
+    app.config["SECRET_KEY"] = 'ABC123'
     db.init_app(app)
 
     from demoapp.main.routes import main
