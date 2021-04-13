@@ -1,1 +1,3 @@
-
+This restaurant application takes the form of an online restaurant queue that would take names via the web and allow restaurant staff to seat folks based on the date_added field.  Under routes.py there is class called signupForm that posts a "name" field to capture a string that allows customers to enter their name up to 64 characters long.   The app will then get that customers entry and load it into the database named restaurant.db.  
+The models.py module creates a class Customer for the database that contains an auto-generated ID, name string, and date_added attribute.  The REPR will return the customer's name and date_added to the staff of the restaurant.
+run.py allows us to open a browser session to interact with the external world via http. 
